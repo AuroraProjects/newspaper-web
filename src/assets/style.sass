@@ -1,0 +1,250 @@
+$view-height: 100vh
+$header-height: 80px
+$footer-height: 80px
+\:root
+  --h2-font-color: #2c3e50
+  --date-font-colro: #9CA3AF
+  --background-1: #f4f4f5
+  --main-color: #0e7490
+
+//body
+// font-family: 'Noto Serif SC', serif
+//
+//.vuepress-markdown-body
+// font-family: 'Noto Serif SC', serif
+
+// 去除 safari 选中后的蓝框
+input:focus
+  outline: none
+textarea:focus
+  outline: none
+
+.shadow
+    color: #0e7490
+    text-decoration: none
+    font-weight: 500
+    box-shadow: inset 0 -.125em 0 0 #fff,inset 0 -.375em 0 0 rgba(165,243,252,.4)
+
+a:hover
+  color: var(--main-color)
+  text-decoration: none
+  font-weight: 500
+  box-shadow: inset 0 -.125em 0 0 #fff,inset 0 -.375em 0 0 rgba(165,243,252,.4)
+  h2
+    color: #0e7490
+    text-decoration: none
+    font-weight: 500
+    box-shadow: inset 0 -.125em 0 0 #fff,inset 0 -.375em 0 0 rgba(165,243,252,.4)
+// 黑暗主题
+.dark-theme
+  background-color: #0b1c2c
+  --h2-font-color: #fff
+  --date-font-colro: #fff
+
+// 头部
+.header
+  display: flex
+  height: $header-height
+  //justify-content: center
+  align-items: center
+  // background-color: #0aaeb3
+  justify-content: space-between
+  nav
+    display: flex
+    a
+      margin-right: 10px
+      margin-left: 10px
+
+// 底部
+.footer
+  display: flex
+  height: $footer-height
+  justify-content: center
+  // background-color: #42b983
+  div
+    margin-top: 20px
+    font-size: 13px
+
+// 内容区域
+.content
+  display: flex
+  //justify-content: center
+  align-items: center
+  flex-direction: column
+  flex: 1
+
+// 翻页
+.paging
+  display: flex
+  justify-content: center
+  .prev-page
+    margin: 0 32px
+    padding: 6px 0
+    span
+      color: #0e7490
+      text-decoration: none
+      font-weight: 500
+      box-shadow: inset 0 -.125em 0 0 #fff,inset 0 -.375em 0 0 rgba(165,243,252,.4)
+  .next-page
+    margin: 0 32px
+    padding: 6px 0
+
+// 文章
+.post-container
+  display: flex
+  margin-top: 20px
+  .post-info
+    color: var(--date-font-colro)
+    text-align: center
+    span
+      font-size: 12px
+  h2
+    color: var(--h2-font-color)
+    font-weight: 900
+    font-size: 28px
+  article
+    margin-top: 20px
+    margin-bottom: 10px
+
+// 全局容器
+.container
+  display: flex
+  flex-direction: column
+  padding-left: 4vw
+  padding-right: 4vw
+  margin-left: auto
+  margin-right: auto
+  height: $view-height
+
+.article-container
+  display: flex
+  flex-direction: column
+  max-width: 800px
+  margin-left: auto
+  margin-right: auto
+  padding-left: 2vw
+  padding-right: 2vw
+
+.post-header
+  display: flex
+  justify-content: center
+  margin-top: 20px
+  [type='button']
+    background-color: #f4f4f5
+    color: #2c3e50
+
+// 文章底部版权设置
+.cc-border
+  border: 0 dashed #3D4F5F
+  border-radius: 5px
+  margin-left: 32px
+  margin-right: 32px
+  background-color: #f4f4f5
+  div
+    padding: 10px
+    font-size: 13px
+    color: #3D4F5F
+    a
+      //color: #0e7490
+      text-decoration: none
+      font-weight: 500
+      box-shadow: inset 0 -.125em 0 0 rgba(165,243,252,.4),inset 0 -.375em 0 0 rgba(165,243,252,.4)
+
+// 底部导航
+.navigation
+  display: flex
+  margin-top: 20px
+  font-size: 13px
+  margin-left: 32px
+  margin-right: 32px
+  color: #2c3e50
+  font-weight: bold
+
+.post-footer
+  //display: flex
+  //flex-direction: column
+  //align-items: center
+  margin-bottom: 20px
+  margin-top: 20px
+
+.article-title
+  display: flex
+  flex-direction: column
+  align-items: center
+  margin-top: 20px
+  color: #2C3E50
+  .author
+    text-align: center
+    h1
+      font-size: 35px
+    span
+      font-size: 12px
+    a
+      font-size: 12px
+
+// md 解析 css 重写
+.github-markdown-body
+  a
+    color: #3D4F5F
+    text-decoration: none
+    font-weight: 500
+    box-shadow: inset 0 -.125em 0 0 rgba(165,243,252,.4),inset 0 -.375em 0 0 rgba(165,243,252,.4)
+  a:hover
+    color: #0e7490
+    text-decoration: none
+    font-weight: 500
+    box-shadow: inset 0 -.125em 0 0 rgba(165,243,252,.4)rgba(165,243,252,.4),inset 0 -.375em 0 0 rgba(165,243,252,.4)
+
+.github-markdown-body h1,h2,h3,h4,h5,h6
+  color: #2C3E50
+
+// 评论
+.comments
+  border: 1px solid #e8e8e8
+  border-radius: 4px
+  margin-bottom: 15px
+  .comments-info
+    display: flex
+    border-radius: 5px 5px 0 0
+    input
+      width: 100%
+      padding: 8px 12px
+      border-bottom: 1px solid #e8e8e8
+      // 去除 safari 默认的圆角边框
+      border-radius: 0
+    input:nth-child(2)
+      border-left: 1px solid #e8e8e8
+    input:nth-child(3)
+      border-left: 1px solid #e8e8e8
+  .comments-input
+    display: flex
+    padding: 10px 12px
+    border-bottom: 1px solid #e8e8e8
+    textarea
+      width: 100%
+      min-height: 130px
+      resize: none
+  .comments-submit
+    display: flex
+    flex: 2
+    .icon
+      flex: 2
+      padding: 6px 10px 3px 5px
+    .submit-button
+      flex: 1
+      button
+        width: 100%
+        height: 100%
+        background-color: #1976D2
+        color: #ffffff
+      button:hover
+        background-color: #2196F3
+
+.comments-list-header
+  display: flex
+  justify-content: space-between
+  h1
+    font-size: 16px
+  p
+    color: #8491a6
+    font-size: 12px
