@@ -1,9 +1,11 @@
 <script setup>
 import { HomeOutline } from '@vicons/ionicons5'
+import { NCollapseItem, NCollapse } from 'naive-ui'
 import Comments from './Comments.vue'
-import { NIcon, NButton, NHr } from 'naive-ui'
+import { NIcon, NButton, NHr, NBackTop } from 'naive-ui'
 import { useRouter } from 'vue-router'
-import {ref} from "vue";
+import { ref, onMounted } from "vue"
+
 const text = `
 ##  关于机器的作用
 
@@ -16,6 +18,8 @@ print("hello")
 [百度](https://baidu.com)
 
 ### 1. 第一部分 数据库
+
+#### 2.test
 
 需要 4 台机器，两台域控服务器，两台数据库服务器。
 
@@ -63,9 +67,44 @@ const homePush = () => {
   router.push("/")
 }
 const date = ref("2022-03-03")
+
+// 获取目录结构
+const menu = ref()
+onMounted(() => {
+  menu.value = Array.prototype.slice.call(document.querySelectorAll('h1,h2,h3,h4,h5,h6'))
+  // 删除头部主题名和尾部评论数
+  menu.value.splice(0,1).splice(menu.value.length - 1, 1)
+  // 循环出选定节点，然后添加一个 id 属性
+  for (const i of menu.value) {
+    const element = document.querySelector(`*[data-v-md-line="${i.dataset.vMdLine}"]`)
+    element.id = `${i.innerText}`
+  }
+})
+
+// 跳转到指定区域
+const jump = (id) => {
+  const element = document.querySelector(`*[data-v-md-line="${id}"]`)
+  element.scrollIntoView(element)
+}
+
+
 </script>
 
 <template>
+  <n-back-top :right="40" :bottom="160">
+    <div
+        style="
+        width: 200px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        font-size: 14px;
+        background-color: #0b1c2c;
+      "
+    >
+      改变位置
+    </div>
+  </n-back-top>
   <div class="article-container">
     <div class="post-header">
       <n-button type="primary" color="#f4f4f5" text-color="#2c3e50" @click="homePush">
@@ -81,6 +120,17 @@ const date = ref("2022-03-03")
         <span>2022-01-02</span>
         <span style="color: #D1D5DB" class="mx-2">/</span>
         <a>千面妖</a>
+      </div>
+    </div>
+    <div class="">
+      <div class="menu">
+        <n-collapse>
+          <n-collapse-item title="目录" name="1">
+            <div :id="value.localName" v-for="(value, index) of menu" :key="index">
+              <a class="cursor-pointer menu-retract" @click="jump(value.dataset.vMdLine)">{{ value.id }}</a>
+            </div>
+          </n-collapse-item>
+        </n-collapse>
       </div>
     </div>
     <div>

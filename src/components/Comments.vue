@@ -14,7 +14,7 @@ const submit = () => {
 </script>
 
 <template>
-  <div class="comments">
+  <div id="comments" class="comments">
     <div class="comments-info">
       <input placeholder="昵称">
       <input placeholder="邮箱">
@@ -37,7 +37,7 @@ const submit = () => {
     </div>
   </div>
   <div class="comments-list-header">
-    <h1> 100条评论 </h1>
+    <div> 100条评论 </div>
     <p> 由羊皮卷驱动 </p>
   </div>
   <n-hr />
