@@ -1,13 +1,8 @@
 <script setup>
-import { NIcon, NHr } from 'naive-ui';
 import { LogoMarkdown } from '@vicons/ionicons5';
 import { ref } from 'vue';
+const commentNumber = ref(100)
 
-const list = ref(['1111111111111111111111111111111111111111111111111', '22222']);
-const demo = ref();
-const submit = () => {
-  list.value.unshift(demo.value);
-};
 </script>
 
 <template>
@@ -34,7 +29,7 @@ const submit = () => {
     </div>
   </div>
   <div class="comments-list-header">
-    <div> 100条评论 </div>
+    <div> {{ commentNumber  }} 条评论 </div>
     <p> <a href="https://github.com/AuroraProjects/newspaper-web">Newspaper</a> 驱动 </p>
   </div>
   <n-hr />

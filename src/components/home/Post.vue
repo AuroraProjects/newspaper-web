@@ -121,7 +121,7 @@ const backTop = () => {
       </div>
     </div>
   </transition>
-  <!--滚动容器-->
+  <!--文章主体容器-->
   <div class="article-container">
     <div class="post-header">
       <n-button type="primary" color="#f4f4f5" text-color="#2c3e50" @click="homePush">

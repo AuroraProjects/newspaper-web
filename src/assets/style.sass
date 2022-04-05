@@ -13,9 +13,8 @@ input:focus
 textarea:focus
   outline: none
 
-#app
-  height: $view-height
-  overflow: inherit
+// body
+//   background-color: #F6F7F8
 
 //.shadow
 //    color: #0e7490
@@ -205,6 +204,7 @@ a:hover
   border: 1px solid #e8e8e8
   border-radius: 4px
   margin-bottom: 15px
+  background-color: #ffffff
   .comments-info
     display: flex
     border-radius: 5px 5px 0 0
@@ -346,3 +346,35 @@ a:hover
 .fade-enter-from,
 .fade-leave-to
   opacity: 0
+
+// 主页头部信息
+.home-header
+  display: flex
+  flex-direction: column
+  justify-self: center
+  align-items: center
+  p
+    display: flex
+    justify-content: center
+    color: #888
+    text-align: center
+  h1
+    text-align: center
+    // span:hover
+    //   background-color: #888
+    //   animation: .5s linear 1s infinite alternate slidein
+  .social
+    display: flex 
+    justify-content: space-around
+    max-width: 600px
+    margin-top: 20px
+    width: 100%
+    div
+      [type="button"]
+        background-color: #ffffff
+      [type="button"]:nth-child(2)
+        margin-left: 10px
+      [type="button"]:nth-child(3)
+        margin-left: 10px
+      [type="button"]:nth-child(4)
+        margin-left: 10px
