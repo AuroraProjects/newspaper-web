@@ -38,7 +38,7 @@ const submit = () => {
   </div>
   <div class="comments-list-header">
     <div> 100条评论 </div>
-    <p> 由羊皮卷驱动 </p>
+    <p> <a href="https://github.com/AuroraProjects/newspaper-web">Newspaper</a> 驱动 </p>
   </div>
   <n-hr />
   <ul>

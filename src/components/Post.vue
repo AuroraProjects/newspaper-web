@@ -170,8 +170,8 @@ const backTop = () => {
     <n-hr />
     <div class="post-footer">
       <comments />
-      <div>
-        底部版权
+      <div class="post-copyright">
+        <p>自豪的使用 <a href="https://github.com/AuroraProjects/newspaper-web">Newspaper</a> 驱动</p>
       </div>
     </div>
   </div>
