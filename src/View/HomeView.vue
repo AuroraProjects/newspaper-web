@@ -1,7 +1,7 @@
 <script setup>
-import HeaderView from '../components/home/layouts/Herder.vue';
-import FooterView from '../components/home/layouts/Footer.vue';
-import ContentView from '../components/home/layouts/Content.vue';
+import HeaderView from '../layouts/home/Herder.vue';
+import FooterView from '../layouts/home/Footer.vue';
+import ContentView from '../layouts/home/Content.vue';
 </script>
 
 <template>
