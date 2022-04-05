@@ -1,1 +1,14 @@
 @import "style"
+
+.n-button:not(.n-button--disabled):hover
+    color: #333639
+    --n-border-hover: 1px solid rgb(224, 224, 230)  !important
+    box-shadow: rgb(224, 224, 230) 0px 0px 5px inset !important
+    box-shadow: none
+
+.n-button:not(.n-button--disabled):active
+    --n-border-pressed: none !important
+
+.n-button:not(.n-button--disabled):focus
+    color: #333639
+    --n-border-focus: #333639 !important

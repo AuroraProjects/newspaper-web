@@ -124,7 +124,7 @@ const backTop = () => {
   <!--文章主体容器-->
   <div class="article-container">
     <div class="post-header">
-      <n-button type="primary" color="#f4f4f5" text-color="#2c3e50" @click="homePush">
+      <n-button @click="homePush">
         <template #icon>
           <n-icon :size="18" :component="HomeOutline" />
         </template>

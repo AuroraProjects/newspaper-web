@@ -1,11 +1,35 @@
 <script setup>
-import { ArrowForward, LogoGithub, LogoTwitter, Mail, Person } from '@vicons/ionicons5';
+import { LogoGithub, LogoTwitter, Mail } from '@vicons/ionicons5';
 import { ref } from 'vue';
 // 测试数据
 const data = ref([
   {
     title: '测试文章01',
     date: '2022-01-01',
+  },
+  {
+    title: '测试文章02',
+    date: '2022-01-02',
+  },
+  {
+    title: '测试文章02',
+    date: '2022-01-02',
+  },
+  {
+    title: '测试文章02',
+    date: '2022-01-02',
+  },
+  {
+    title: '测试文章02',
+    date: '2022-01-02',
+  },
+  {
+    title: '测试文章02',
+    date: '2022-01-02',
+  },
+  {
+    title: '测试文章02',
+    date: '2022-01-02',
   },
   {
     title: '测试文章02',
@@ -63,7 +87,7 @@ const data = ref([
   <div id="comments" class="content post-container">
     <article v-for="(item, index) of data" :key="index">
       <a href="/post/1">
-        <h2># {{ item.title }}</h2>
+        <h2 class="text-2xl"># {{ item.title }}</h2>
       </a>
       <div class="post-info">
         <span>{{ item.date }}</span>
