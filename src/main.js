@@ -16,6 +16,7 @@ import createLineNumbertPlugin from '@kangc/v-md-editor/lib/plugins/line-number/
 // 引入 tailwind.css
 import "tailwindcss/tailwind.css"
 import './assets/style.sass'
+import './assets/rewrite.sass'
 
 import store from './router/index.js'
 import router from './store/index.js'

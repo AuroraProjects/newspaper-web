@@ -1,11 +1,11 @@
 <script setup>
 import { HomeOutline } from '@vicons/ionicons5'
-import { NCollapseItem, NCollapse } from 'naive-ui'
 import Comments from './Comments.vue'
-import { NIcon, NButton, NHr, NBackTop } from 'naive-ui'
+import { NIcon, NButton, NHr, NCollapseItem, NCollapse, NBackTop } from 'naive-ui'
 import { useRouter } from 'vue-router'
-import { ref, onMounted } from "vue"
+import {ref, onMounted} from "vue"
 
+// md 测试数据
 const text = `
 ##  关于机器的作用
 
@@ -62,6 +62,7 @@ kafaka 消息队列用来处理所有终端传入的信息，所有行为都是�
 kafaka 消息队列用来处理所有终端传入的信息，所有行为都是问了缓解后端处理数据的压力。
 
 `
+
 const router = useRouter()
 const homePush = () => {
   router.push("/")
@@ -83,29 +84,23 @@ onMounted(() => {
 
 // 跳转到指定区域
 const jump = (id) => {
-  const element = document.querySelector(`*[data-v-md-line="${id}"]`)
-  element.scrollIntoView(element)
+  // 平滑滚动到锚点
+  document.getElementById(id).scrollIntoView({
+    block: 'start',
+    behavior: 'smooth'
+  })
 }
 
+//本页面的 URL
+const localUrl = window.location.href
 
 </script>
 
 <template>
-  <n-back-top :right="40" :bottom="160">
-    <div
-        style="
-        width: 200px;
-        height: 40px;
-        line-height: 40px;
-        text-align: center;
-        font-size: 14px;
-        background-color: #0b1c2c;
-      "
-    >
-      改变位置
-    </div>
-  </n-back-top>
-  <div class="article-container">
+  <!--回到顶部-->
+  <n-back-top />
+  <!--滚动容器-->
+  <div id="post-container" class="article-container">
     <div class="post-header">
       <n-button type="primary" color="#f4f4f5" text-color="#2c3e50" @click="homePush">
         <template #icon>
@@ -127,19 +122,21 @@ const jump = (id) => {
         <n-collapse>
           <n-collapse-item title="目录" name="1">
             <div :id="value.localName" v-for="(value, index) of menu" :key="index">
-              <a class="cursor-pointer menu-retract" @click="jump(value.dataset.vMdLine)">{{ value.id }}</a>
+              <a class="cursor-pointer menu-retract" @click="jump(value.id)">{{ value.id }}</a>
             </div>
           </n-collapse-item>
         </n-collapse>
       </div>
     </div>
     <div>
-      <v-md-preview :text="text"></v-md-preview>
+      <v-md-preview id="post-content" :text="text"></v-md-preview>
       <div class="cc-border">
         <div>
           本文采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh">CC BY-4.0 协议</a>
           <br>
           如果您需要转载此文章，请署名本文章作者，并且注明来源
+          <br>
+          文章URL: <a :href="localUrl">{{ localUrl }}</a>
         </div>
       </div>
     </div>
