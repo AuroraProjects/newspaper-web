@@ -1,16 +1,16 @@
 <script setup>
-import { ref } from 'vue'
+import { ref } from 'vue';
 // 测试数据
 const data = ref([
   {
     title: '测试文章01',
-    date: '2022-01-01'
+    date: '2022-01-01',
   },
   {
     title: '测试文章02',
-    date: '2022-01-02'
+    date: '2022-01-02',
   },
-])
+]);
 </script>
 
 <template>

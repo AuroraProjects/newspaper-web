@@ -1,22 +1,22 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../View/HomeView.vue'
-import Posts from '../components/Post.vue'
+import { createRouter, createWebHistory } from 'vue-router';
+import HomeView from '../View/HomeView.vue';
+import Posts from '../components/home/Post.vue';
 
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: HomeView,
   },
   {
     path: '/post/:id',
-    component: Posts
-  }
-]
+    component: Posts,
+  },
+];
 
 const router = createRouter({
   history: createWebHistory(),
   routes: routes,
-})
+});
 
-export default router
+export default router;

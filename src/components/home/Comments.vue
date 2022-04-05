@@ -1,24 +1,21 @@
 <script setup>
-import {NIcon, NHr} from "naive-ui"
-import {LogoMarkdown} from '@vicons/ionicons5'
-import {ref} from 'vue'
+import { NIcon, NHr } from 'naive-ui';
+import { LogoMarkdown } from '@vicons/ionicons5';
+import { ref } from 'vue';
 
-const list = ref([
-  "1111111111111111111111111111111111111111111111111",
-  "22222"
-])
-const demo = ref()
+const list = ref(['1111111111111111111111111111111111111111111111111', '22222']);
+const demo = ref();
 const submit = () => {
-  list.value.unshift(demo.value)
-}
+  list.value.unshift(demo.value);
+};
 </script>
 
 <template>
   <div id="comments" class="comments">
     <div class="comments-info">
-      <input placeholder="昵称">
-      <input placeholder="邮箱">
-      <input placeholder="站点链接">
+      <input placeholder="昵称" />
+      <input placeholder="邮箱" />
+      <input placeholder="站点链接" />
     </div>
     <div class="comments-input">
       <textarea placeholder="请输入您的评论..."></textarea>
@@ -27,7 +24,7 @@ const submit = () => {
       <div class="icon">
         <span>
           <n-icon size="20">
-            <logo-markdown/>
+            <logo-markdown />
           </n-icon>
         </span>
       </div>

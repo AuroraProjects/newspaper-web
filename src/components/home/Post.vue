@@ -1,9 +1,9 @@
 <script setup>
-import { HomeOutline, CaretUpOutline, ChatbubbleEllipses } from '@vicons/ionicons5'
-import Comments from './Comments.vue'
-import { NIcon, NButton, NHr, NCollapseItem, NCollapse } from 'naive-ui'
-import { useRouter } from 'vue-router'
-import {ref, onMounted} from "vue"
+import { HomeOutline, CaretUpOutline, ChatbubbleEllipses } from '@vicons/ionicons5';
+import Comments from './Comments.vue';
+import { NIcon, NButton, NHr, NCollapseItem, NCollapse } from 'naive-ui';
+import { useRouter } from 'vue-router';
+import { ref, onMounted } from 'vue';
 
 // md 测试数据
 const text = `
@@ -61,53 +61,52 @@ kafaka 消息队列用来处理所有终端传入的信息，所有行为都是�
 
 kafaka 消息队列用来处理所有终端传入的信息，所有行为都是问了缓解后端处理数据的压力。
 
-`
+`;
 
-const router = useRouter()
+const router = useRouter();
 const homePush = () => {
-  router.push("/")
-}
-const date = ref("2022-03-03")
+  router.push('/');
+};
+const date = ref('2022-03-03');
 
 // 获取目录结构
-const menu = ref()
+const menu = ref();
 onMounted(() => {
-  menu.value = Array.prototype.slice.call(document.querySelectorAll('h1,h2,h3,h4,h5,h6'))
+  menu.value = Array.prototype.slice.call(document.querySelectorAll('h1,h2,h3,h4,h5,h6'));
   // 删除头部主题名和尾部评论数
-  menu.value.splice(0,1).splice(menu.value.length - 1, 1)
+  menu.value.splice(0, 1).splice(menu.value.length - 1, 1);
   // 循环出选定节点，然后添加一个 id 属性
   for (const i of menu.value) {
-    const element = document.querySelector(`*[data-v-md-line="${i.dataset.vMdLine}"]`)
-    element.id = `${i.innerText}`
+    const element = document.querySelector(`*[data-v-md-line="${i.dataset.vMdLine}"]`);
+    element.id = `${i.innerText}`;
   }
 
-  backTop()
-})
+  backTop();
+});
 
 // 跳转到指定区域
-const jump = (id) => {
+const jump = id => {
   // 平滑滚动到锚点
   document.getElementById(id).scrollIntoView({
     block: 'start',
-    behavior: 'smooth'
-  })
-}
+    behavior: 'smooth',
+  });
+};
 
 //本页面的 URL
-const localUrl = window.location.href
+const localUrl = window.location.href;
 
 // 回到顶部
-const scrollHide = ref(true)
+const scrollHide = ref(true);
 const backTop = () => {
   window.addEventListener('scroll', () => {
     if (document.documentElement.scrollTop > 200) {
-      scrollHide.value = false
+      scrollHide.value = false;
     } else if (document.documentElement.scrollTop < 200) {
-      scrollHide.value = true
+      scrollHide.value = true;
     }
-  })
-}
-
+  });
+};
 </script>
 
 <template>
@@ -118,7 +117,7 @@ const backTop = () => {
         <n-icon><caret-up-outline /></n-icon>
       </div>
       <div id="back-comments" @click="jump('comments')">
-        <n-icon><chatbubble-ellipses/></n-icon>
+        <n-icon><chatbubble-ellipses /></n-icon>
       </div>
     </div>
   </transition>
@@ -136,7 +135,7 @@ const backTop = () => {
       <div class="author">
         <h1>测试数据</h1>
         <span>2022-01-02</span>
-        <span style="color: #D1D5DB" class="mx-2">/</span>
+        <span style="color: #d1d5db" class="mx-2">/</span>
         <a>千面妖</a>
       </div>
     </div>
@@ -155,23 +154,25 @@ const backTop = () => {
       <v-md-preview id="post-content" :text="text"></v-md-preview>
       <div class="cc-border">
         <div>
-          本文采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh">CC BY-4.0 协议</a>
-          <br>
+          本文采用
+          <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh">CC BY-4.0 协议</a>
+          <br />
           如果您需要转载此文章，请署名本文章作者，并且注明来源
-          <br>
+          <br />
           文章URL: <a :href="localUrl">{{ localUrl }}</a>
         </div>
       </div>
     </div>
     <!--导航-->
-    <div class="navigation">
-      更新时间: {{ date }}
-    </div>
+    <div class="navigation"> 更新时间: {{ date }} </div>
     <n-hr />
     <div class="post-footer">
       <comments />
       <div class="post-copyright">
-        <p>自豪的使用 <a href="https://github.com/AuroraProjects/newspaper-web">Newspaper</a> 驱动</p>
+        <p
+          >自豪的使用
+          <a href="https://github.com/AuroraProjects/newspaper-web">Newspaper</a> 驱动</p
+        >
       </div>
     </div>
   </div>
