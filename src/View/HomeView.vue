@@ -6,6 +6,7 @@ import { ArrowBack, ArrowForward } from '@vicons/ionicons5';
 </script>
 
 <template>
+  <!-- 全局容器 -->
   <div class="global-container">
     <!--头部-->
     <header-view />
