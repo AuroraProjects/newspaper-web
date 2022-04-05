@@ -311,6 +311,7 @@ a:hover
 .back-hide
   display: none
 
+// 导航到评论
 #back-comments
   background-color: #fff
   width: 40px
@@ -332,3 +333,12 @@ a:hover
 
 #back-comments:active
   color: #0e7490
+
+// 淡出淡入动画
+.fade-enter-active,
+.fade-leave-active
+  transition: opacity 0.5s ease
+
+.fade-enter-from,
+.fade-leave-to
+  opacity: 0

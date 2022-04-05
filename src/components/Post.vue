@@ -112,14 +112,16 @@ const backTop = () => {
 
 <template>
   <!--回到顶部-->
-  <div :class="{'back-hide': scrollHide}">
-    <div id="back-top" @click="jump('app')">
-      <n-icon><caret-up-outline /></n-icon>
+  <transition name="fade">
+    <div v-if="!scrollHide">
+      <div id="back-top" @click="jump('app')">
+        <n-icon><caret-up-outline /></n-icon>
+      </div>
+      <div id="back-comments" @click="jump('comments')">
+        <n-icon><chatbubble-ellipses/></n-icon>
+      </div>
     </div>
-    <div id="back-comments" @click="jump('comments')">
-      <n-icon><chatbubble-ellipses/></n-icon>
-    </div>
-  </div>
+  </transition>
   <!--滚动容器-->
   <div class="article-container">
     <div class="post-header">
