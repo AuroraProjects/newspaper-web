@@ -1,7 +1,7 @@
 <script setup>
-import { HomeOutline } from '@vicons/ionicons5'
+import { HomeOutline, CaretUpOutline, ChatbubbleEllipses } from '@vicons/ionicons5'
 import Comments from './Comments.vue'
-import { NIcon, NButton, NHr, NCollapseItem, NCollapse, NBackTop } from 'naive-ui'
+import { NIcon, NButton, NHr, NCollapseItem, NCollapse } from 'naive-ui'
 import { useRouter } from 'vue-router'
 import {ref, onMounted} from "vue"
 
@@ -80,6 +80,8 @@ onMounted(() => {
     const element = document.querySelector(`*[data-v-md-line="${i.dataset.vMdLine}"]`)
     element.id = `${i.innerText}`
   }
+
+  backTop()
 })
 
 // 跳转到指定区域
@@ -94,13 +96,32 @@ const jump = (id) => {
 //本页面的 URL
 const localUrl = window.location.href
 
+// 回到顶部
+const scrollHide = ref(true)
+const backTop = () => {
+  window.addEventListener('scroll', () => {
+    if (document.documentElement.scrollTop > 200) {
+      scrollHide.value = false
+    } else if (document.documentElement.scrollTop < 200) {
+      scrollHide.value = true
+    }
+  })
+}
+
 </script>
 
 <template>
   <!--回到顶部-->
-  <n-back-top />
+  <div :class="{'back-hide': scrollHide}">
+    <div id="back-top" @click="jump('app')">
+      <n-icon><caret-up-outline /></n-icon>
+    </div>
+    <div id="back-comments" @click="jump('comments')">
+      <n-icon><chatbubble-ellipses/></n-icon>
+    </div>
+  </div>
   <!--滚动容器-->
-  <div id="post-container" class="article-container">
+  <div class="article-container">
     <div class="post-header">
       <n-button type="primary" color="#f4f4f5" text-color="#2c3e50" @click="homePush">
         <template #icon>

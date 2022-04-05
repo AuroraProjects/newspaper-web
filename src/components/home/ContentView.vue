@@ -14,7 +14,7 @@ const data = ref([
 </script>
 
 <template>
-  <div class="content post-container">
+  <div id="comments" class="content post-container">
     <article v-for="(item, index) of data" :key="index">
       <a href="/post/1">
         <h2># {{ item.title }}</h2>
