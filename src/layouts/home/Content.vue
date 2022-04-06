@@ -7,34 +7,34 @@ import {
   ChatbubbleEllipsesOutline,
   HeartOutline,
   HeartSharp,
-} from '@vicons/ionicons5';
-import { ref } from 'vue';
+} from "@vicons/ionicons5";
+import { ref } from "vue";
 // 测试数据
 const data = ref([
   {
     id: 1,
-    title: 'make 和 new 的区别',
-    type: 'article',
-    date: '2022-01-01',
-    likeNum: '100'
+    title: "make 和 new 的区别",
+    type: "article",
+    date: "2022-01-01",
+    likeNum: "100",
   },
   {
     id: 2,
-    title: '这里只有一句话，没有其他的',
-    type: 'log',
-    date: '2022-01-02',
-    likeNum: '30'
+    title: "这里只有一句话，没有其他的",
+    type: "log",
+    date: "2022-01-02",
+    likeNum: "30",
   },
 ]);
 
 // 喜欢此文章
-const hear = ref(false)
+const hear = ref(false);
 const like = (id) => {
-  hear.value = id
+  hear.value = id;
   setTimeout(() => {
-    hear.value = undefined
-  }, 500)
-}
+    hear.value = undefined;
+  }, 500);
+};
 </script>
 
 <template>
@@ -44,7 +44,9 @@ const like = (id) => {
       <h1 class="md:text-2xl lg:text-3xl">
         <span class="mr-2.5">👋</span> Hey, Here is the Newspaper
       </h1>
-      <p class="md:text-sm lg:text-base">过着绝对没有意义的生活，没有完全无法实现的目标。</p>
+      <p class="md:text-sm lg:text-base">
+        过着绝对没有意义的生活，没有完全无法实现的目标。
+      </p>
     </div>
     <!-- 社交信息 -->
     <div class="social">
@@ -113,18 +115,22 @@ const like = (id) => {
       </div>
       <div class="post-info">
         <!-- 未填充状态 -->
-        <n-icon v-if="hear !== item.id"  @click="like(item.id)"  color="#F87171" size="18">
+        <n-icon v-if="hear !== item.id" @click="like(item.id)" color="#F87171" size="18">
           <heart-outline />
         </n-icon>
         <!-- 填充状态 -->
-        <n-icon v-if="hear === item.id"  color="#F87171" size="18">
+        <n-icon v-if="hear === item.id" color="#F87171" size="18">
           <heart-sharp />
         </n-icon>
         <span class="like">{{ item.likeNum }}</span>
         <span>·</span>
         <p>{{ item.date }}</p>
         <span>·</span>
-        <p>{{ item.type === 'log' ? '日志' : item.type === 'article' ? '文章' : undefined  }}</p>
+        <p>
+          {{
+            item.type === "log" ? "日志" : item.type === "article" ? "文章" : undefined
+          }}
+        </p>
       </div>
     </div>
   </div>

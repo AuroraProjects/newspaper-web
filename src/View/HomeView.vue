@@ -1,8 +1,8 @@
 <script setup>
-import HeaderView from '../layouts/home/Herder.vue';
-import FooterView from '../layouts/home/Footer.vue';
-import ContentView from '../layouts/home/Content.vue';
-import { ArrowBack, ArrowForward } from '@vicons/ionicons5';
+import HeaderView from "../layouts/home/Herder.vue";
+import FooterView from "../layouts/home/Footer.vue";
+import ContentView from "../layouts/home/Content.vue";
+import { ArrowBack, ArrowForward } from "@vicons/ionicons5";
 </script>
 
 <template>

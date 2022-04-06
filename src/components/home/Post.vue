@@ -1,15 +1,15 @@
 <script setup>
-import { HomeOutline, CaretUpOutline, ChatbubbleEllipses } from '@vicons/ionicons5';
-import Comments from './Comments.vue';
-import { NIcon, NButton, NHr, NCollapseItem, NCollapse } from 'naive-ui';
-import { useRouter } from 'vue-router';
-import { ref, onMounted } from 'vue';
+import { HomeOutline, CaretUpOutline, ChatbubbleEllipses } from "@vicons/ionicons5";
+import Comments from "./Comments.vue";
+import { NIcon, NButton, NHr, NCollapseItem, NCollapse } from "naive-ui";
+import { useRouter } from "vue-router";
+import { ref, onMounted } from "vue";
 
 // md 测试数据
 const post = ref({
-  title: 'make 和 new 的区别',
-  author: '千面妖',
-  date: '2022-04-06',
+  title: "make 和 new 的区别",
+  author: "千面妖",
+  date: "2022-04-06",
   md: `
 > 部分代码引用自 GO 源码
 
@@ -113,19 +113,19 @@ func main() {
 \`\`\`
 
 可以看到，new 函数返回的是一个指向该类型的指针，其值为该类型的零值。
-  `
-})
+  `,
+});
 
 const router = useRouter();
 const homePush = () => {
-  router.push('/');
+  router.push("/");
 };
-const date = ref('2022-03-03');
+const date = ref("2022-03-03");
 
 // 获取目录结构
 const menu = ref();
 onMounted(() => {
-  menu.value = Array.prototype.slice.call(document.querySelectorAll('h1,h2,h3,h4,h5,h6'));
+  menu.value = Array.prototype.slice.call(document.querySelectorAll("h1,h2,h3,h4,h5,h6"));
   // 删除头部主题名和尾部评论数
   menu.value.splice(0, 1).splice(menu.value.length - 1, 1);
   // 循环出选定节点，然后添加一个 id 属性
@@ -138,11 +138,11 @@ onMounted(() => {
 });
 
 // 跳转到指定区域
-const jump = id => {
+const jump = (id) => {
   // 平滑滚动到锚点
   document.getElementById(id).scrollIntoView({
-    block: 'start',
-    behavior: 'smooth',
+    block: "start",
+    behavior: "smooth",
   });
 };
 
@@ -152,7 +152,7 @@ const localUrl = window.location.href;
 // 回到顶部
 const scrollHide = ref(true);
 const backTop = () => {
-  window.addEventListener('scroll', () => {
+  window.addEventListener("scroll", () => {
     if (document.documentElement.scrollTop > 200) {
       scrollHide.value = false;
     } else if (document.documentElement.scrollTop < 200) {
@@ -198,7 +198,9 @@ const backTop = () => {
         <n-collapse>
           <n-collapse-item title="目录" name="1">
             <div :id="value.localName" v-for="(value, index) of menu" :key="index">
-              <a class="cursor-pointer menu-retract" @click="jump(value.id)">{{ value.id }}</a>
+              <a class="cursor-pointer menu-retract" @click="jump(value.id)">{{
+                value.id
+              }}</a>
             </div>
           </n-collapse-item>
         </n-collapse>
@@ -209,7 +211,9 @@ const backTop = () => {
       <div class="cc-border">
         <div>
           本文采用
-          <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh">CC BY-4.0 协议</a>
+          <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh"
+            >CC BY-4.0 协议</a
+          >
           <br />
           如果您需要转载此文章，请署名本文章作者，并且注明来源
           <br />
@@ -218,15 +222,15 @@ const backTop = () => {
       </div>
     </div>
     <!--导航-->
-    <div class="navigation"> 更新时间: {{ date }} </div>
+    <div class="navigation">更新时间: {{ date }}</div>
     <n-hr />
     <div class="post-footer">
       <comments />
       <div class="post-copyright">
-        <p
-          >自豪的使用
-          <a href="https://github.com/AuroraProjects/newspaper-web">Newspaper</a> 驱动</p
-        >
+        <p>
+          自豪的使用
+          <a href="https://github.com/AuroraProjects/newspaper-web">Newspaper</a> 驱动
+        </p>
       </div>
     </div>
   </div>

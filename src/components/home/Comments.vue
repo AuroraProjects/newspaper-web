@@ -1,8 +1,7 @@
 <script setup>
-import { LogoMarkdown } from '@vicons/ionicons5';
-import { ref } from 'vue';
-const commentNumber = ref(100)
-
+import { LogoMarkdown } from "@vicons/ionicons5";
+import { ref } from "vue";
+const commentNumber = ref(100);
 </script>
 
 <template>
@@ -29,8 +28,8 @@ const commentNumber = ref(100)
     </div>
   </div>
   <div class="comments-list-header">
-    <div> {{ commentNumber  }} 条评论 </div>
-    <p> <a href="https://github.com/AuroraProjects/newspaper-web">Newspaper</a> 驱动 </p>
+    <div>{{ commentNumber }} 条评论</div>
+    <p><a href="https://github.com/AuroraProjects/newspaper-web">Newspaper</a> 驱动</p>
   </div>
   <n-hr />
   <ul>

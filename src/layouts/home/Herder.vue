@@ -12,9 +12,7 @@
         <a>测试选项</a>
       </nav>
     </div>
-    <div>
-      SEARCH
-    </div>
+    <div>SEARCH</div>
   </header>
 </template>
 
