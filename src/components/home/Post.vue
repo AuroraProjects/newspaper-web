@@ -6,62 +6,115 @@ import { useRouter } from 'vue-router';
 import { ref, onMounted } from 'vue';
 
 // md 测试数据
-const text = `
-##  关于机器的作用
+const post = ref({
+  title: 'make 和 new 的区别',
+  author: '千面妖',
+  date: '2022-04-06',
+  md: `
+> 部分代码引用自 GO 源码
 
-本文档简述了一下每台机器的作用和必须性，具体依据可见扩容方案中的详细描述
+两个函数都是用于给变量划分内存空间
 
-\`\`\`python
-print("hello")
+### make
+
+make 主要用于给切片、映射和通道这种引用类型的变量分配内存空间。
+
+可以看一下源码中的定义。
+
+\`\`\`go
+func make(t Type, size ...IntegerType) Type
 \`\`\`
 
-[百度](https://baidu.com)
+可以看到 go 源码中对 make 的定义，make 可以接收多个值，第一个是一个类型，后面的值可以用于分配初始容量，接收的是一个不定长的整数类型。
 
-### 1. 第一部分 数据库
+返回的是这个类型的本身。
 
-#### 2.test
+可以看一下它在源码中的注释。
 
-需要 4 台机器，两台域控服务器，两台数据库服务器。
+\`\`\`go
+// The make built-in function allocates and initializes an object of type
+// slice, map, or chan (only). Like new, the first argument is a type, not a
+// value. Unlike new, make's return type is the same as the type of its
+// argument, not a pointer to it. The specification of the result depends on
+\`\`\`
 
-数据库服务器一台作为主节点，一台作为备节点，采用的是AlwaysOn高可用方案，实现的效果是主节点如果出现故障，将会直接转移到备节点上，使整个系统保持正常的运行。
+第一段解释了 make 的作用，make 主要用于分配和初始化 map、slice、chan，第一个参数是一个类型，和 new 不同的是，make 返回的是该类型本身，而不是指针，因为 map、slice、chan 本来就是引用类型。
 
-其中的域控服务器用于对需要链接数据库的一些外部服务做审计，实现集中管理和权限控制
+第二段则解释了对于不同类型的分配，需要注意的地方。
 
-### 2. 第二部分 组件
+\`\`\`go
+//\tSlice: The size specifies the length. The capacity of the slice is
+//\tequal to its length. A second integer argument may be provided to
+//\tspecify a different capacity; it must be no smaller than the
+//\tlength. For example, make([]int, 0, 10) allocates an underlying array
+//\tof size 10 and returns a slice of length 0 and capacity 10 that is
+//\tbacked by this underlying array.
 
-需要 1 台机器，其中的 Redis 用于缓存临时交换数据，包含登录，车辆基础信息等。
+//\tMap: An empty map is allocated with enough space to hold the
+//\tspecified number of elements. The size may be omitted, in which case
+//\ta small starting size is allocated.
 
-kafaka 消息队列用来处理所有终端传入的信息，所有行为都是问了缓解后端处理数据的压力。
+//\tChannel: The channel's buffer is initialized with the specified
+//\tbuffer capacity. If zero, or the size is omitted, the channel is
+//\tunbuffered.
+\`\`\`
 
-### 1. 第一部分 数据库
+如果类型是 Slice，第一个参数是 Slice 的类型，后面需要接收容量和长度。
 
-需要 4 台机器，两台域控服务器，两台数据库服务器。
+\`\`\`go
+func main() {
+\ttest := make([]int, 0, 10)
+\tfmt.Println(test) // 输出是[]
+}
+\`\`\`
 
-数据库服务器一台作为主节点，一台作为备节点，采用的是AlwaysOn高可用方案，实现的效果是主节点如果出现故障，将会直接转移到备节点上，使整个系统保持正常的运行。
+如果类型是 map，空间可以省略。
 
-其中的域控服务器用于对需要链接数据库的一些外部服务做审计，实现集中管理和权限控制
+\`\`\`go
+func main() {
+\ttest := make(map[string]string)
+\tfmt.Println(test) // 输出是 map[]
+}
+\`\`\`
 
-### 2. 第二部分 组件
+如果类型是 chan，第二个参数指的是缓冲区，如果为 0 ，或者不指定，通道就没有缓冲。
 
-需要 1 台机器，其中的 Redis 用于缓存临时交换数据，包含登录，车辆基础信息等。
+\`\`\`go
+func main() {
+\ttest := make(chan string, 1)
+\ttest <- "test"
+\tfmt.Println(<-test) // 输出是 "test"
+}
+\`\`\`
 
-kafaka 消息队列用来处理所有终端传入的信息，所有行为都是问了缓解后端处理数据的压力。
+### new
 
-### 1. 第一部分 数据库
+new 主要用于给数组、结构体和所有值类型的变量分配内存空间。
 
-需要 4 台机器，两台域控服务器，两台数据库服务器。
+可以看一下源码中的定义。
 
-数据库服务器一台作为主节点，一台作为备节点，采用的是AlwaysOn高可用方案，实现的效果是主节点如果出现故障，将会直接转移到备节点上，使整个系统保持正常的运行。
+\`\`\`go
+// The new built-in function allocates memory. The first argument is a type,
+// not a value, and the value returned is a pointer to a newly
+// allocated zero value of that type.
+func new(Type) *Type
+\`\`\`
 
-其中的域控服务器用于对需要链接数据库的一些外部服务做审计，实现集中管理和权限控制
+在注释中可以看到，该函数用于给变量分配内存，第一个参数是类型，并且返回的值是一个指向分配该类型零值的指针。
 
-### 2. 第二部分 组件
+现在来测试一下。
 
-需要 1 台机器，其中的 Redis 用于缓存临时交换数据，包含登录，车辆基础信息等。
+\`\`\`go
+func main() {
+\ttest := new(string)
+\tfmt.Printf("%T", test) // 这里会输出 *string
+\tfmt.Println(*test) // 这里应该啥都没有，在 go 中字符串的零值就是空
+}
+\`\`\`
 
-kafaka 消息队列用来处理所有终端传入的信息，所有行为都是问了缓解后端处理数据的压力。
-
-`;
+可以看到，new 函数返回的是一个指向该类型的指针，其值为该类型的零值。
+  `
+})
 
 const router = useRouter();
 const homePush = () => {
@@ -133,13 +186,14 @@ const backTop = () => {
     </div>
     <div class="article-title">
       <div class="author">
-        <h1>测试数据</h1>
-        <span>2022-01-02</span>
+        <h1>{{ post.title }}</h1>
+        <span>{{ post.date }}</span>
         <span style="color: #d1d5db" class="mx-2">/</span>
-        <a>千面妖</a>
+        <a>{{ post.author }}</a>
       </div>
     </div>
-    <div class="">
+    <!-- 目录组件 -->
+    <div>
       <div class="menu">
         <n-collapse>
           <n-collapse-item title="目录" name="1">
@@ -151,7 +205,7 @@ const backTop = () => {
       </div>
     </div>
     <div>
-      <v-md-preview id="post-content" :text="text"></v-md-preview>
+      <v-md-preview id="post-content" :text="post.md"></v-md-preview>
       <div class="cc-border">
         <div>
           本文采用

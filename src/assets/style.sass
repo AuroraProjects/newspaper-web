@@ -1,3 +1,6 @@
+@import "reuse"
+$border-color: #e9e9e9
+$round: .375rem
 $view-height: 100vh
 $header-height: 80px
 $footer-height: 80px
@@ -142,6 +145,7 @@ textarea:focus
   border-radius: .375rem
   margin-left: 32px
   margin-right: 32px
+  @include Background-picture('../static/cc.png', 130px, 90%)
   div
     padding: 10px
     font-size: 13px
@@ -186,22 +190,6 @@ textarea:focus
       font-size: 12px
     a
       font-size: 12px
-
-// md 解析 css 重写
-.github-markdown-body
-  a
-    color: #3D4F5F
-    text-decoration: none
-    font-weight: 500
-    box-shadow: inset 0 -.125em 0 0 rgba(165,243,252,.4),inset 0 -.375em 0 0 rgba(165,243,252,.4)
-  a:hover
-    color: #0e7490
-    text-decoration: none
-    font-weight: 500
-    box-shadow: inset 0 -.125em 0 0 rgba(165,243,252,.4)rgba(165,243,252,.4),inset 0 -.375em 0 0 rgba(165,243,252,.4)
-
-.github-markdown-body h1,h2,h3,h4,h5,h6
-  color: #2C3E50
 
 // 评论
 .comments
@@ -260,14 +248,12 @@ textarea:focus
   display: flex
   padding: 20px 32px 1px
   [class="n-collapse-item__header-main"]
-    border: 0 dashed
+    border: 2px solid #e8e8e8
     border-radius: 5px
-    background-color: #F4F4F5
     padding-top: 10px
     padding-bottom: 10px
     padding-left: 10px
   [class="n-collapse-item__content-inner"]
-    //background-color: #F6F8FA
     padding-left: 10px
   #h2
     border-left: 8px solid
@@ -310,6 +296,7 @@ textarea:focus
   position: fixed
   right: 5%
   bottom: $height
+  z-index: 99
   &:hover
     color: #2276D2
   &:active
@@ -325,7 +312,7 @@ textarea:focus
 // 导航到评论
 #back-comments
   @include suspend-button(20px)
-  
+
 
 // 淡出淡入动画
 .fade-enter-active,
@@ -350,7 +337,7 @@ textarea:focus
   h1
     text-align: center
   .social
-    display: flex 
+    display: flex
     justify-content: space-around
     max-width: 600px
     margin-top: 20px

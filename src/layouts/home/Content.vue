@@ -13,7 +13,7 @@ import { ref } from 'vue';
 const data = ref([
   {
     id: 1,
-    title: 'Vue 学习指南',
+    title: 'make 和 new 的区别',
     type: 'article',
     date: '2022-01-01',
     likeNum: '100'

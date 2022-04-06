@@ -34,6 +34,6 @@ const commentNumber = ref(100)
   </div>
   <n-hr />
   <ul>
-    <li>1</li>
+    <li></li>
   </ul>
 </template>
