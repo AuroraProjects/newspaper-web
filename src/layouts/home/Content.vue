@@ -1,19 +1,40 @@
 <script setup>
-import { LogoGithub, LogoTwitter, Mail, StarOutline } from '@vicons/ionicons5';
+import {
+  LogoGithub,
+  LogoTwitter,
+  Mail,
+  FolderOpenOutline,
+  ChatbubbleEllipsesOutline,
+  HeartOutline,
+  HeartSharp,
+} from '@vicons/ionicons5';
 import { ref } from 'vue';
 // 测试数据
 const data = ref([
   {
+    id: 1,
     title: 'Vue 学习指南',
     type: 'article',
     date: '2022-01-01',
+    likeNum: '100'
   },
   {
+    id: 2,
     title: '这里只有一句话，没有其他的',
     type: 'log',
     date: '2022-01-02',
+    likeNum: '30'
   },
 ]);
+
+// 喜欢此文章
+const hear = ref(false)
+const like = (id) => {
+  hear.value = id
+  setTimeout(() => {
+    hear.value = undefined
+  }, 500)
+}
 </script>
 
 <template>
@@ -63,12 +84,26 @@ const data = ref([
           <!-- 根据不同的文字文章类型渲染不通的样式 -->
           <!-- 日志类型的渲染 -->
           <div v-if="item.type === 'log'">
-            <div class="type">{{ item.type }}</div>
+            <div class="type">
+              <label>
+                <n-icon>
+                  <chatbubble-ellipses-outline />
+                </n-icon>
+                <span>{{ item.type }}</span>
+              </label>
+            </div>
             <p class="text-lg">{{ item.title }}</p>
           </div>
           <!-- 文章类型的渲染 -->
           <div v-if="item.type === 'article'">
-            <div class="type">{{ item.type }}</div>
+            <div class="type">
+              <label>
+                <n-icon>
+                  <folder-open-outline />
+                </n-icon>
+                <span>{{ item.type }}</span>
+              </label>
+            </div>
             <a href="/post/1">
               <h2 class="text-2xl">{{ item.title }}</h2>
             </a>
@@ -77,13 +112,19 @@ const data = ref([
         </article>
       </div>
       <div class="post-info">
-        <n-icon color="#F87171">
-          <star-outline />
+        <!-- 未填充状态 -->
+        <n-icon v-if="hear !== item.id"  @click="like(item.id)"  color="#F87171" size="18">
+          <heart-outline />
         </n-icon>
+        <!-- 填充状态 -->
+        <n-icon v-if="hear === item.id"  color="#F87171" size="18">
+          <heart-sharp />
+        </n-icon>
+        <span class="like">{{ item.likeNum }}</span>
         <span>·</span>
         <p>{{ item.date }}</p>
         <span>·</span>
-        <p>其他信息</p>
+        <p>{{ item.type === 'log' ? '日志' : item.type === 'article' ? '文章' : undefined  }}</p>
       </div>
     </div>
   </div>

@@ -13,7 +13,7 @@ import { ArrowBack, ArrowForward } from '@vicons/ionicons5';
     <!-- 内容区 -->
     <content-view />
     <!-- 翻页 -->
-    <div class="paging cursor-pointer">
+    <div class="paging">
       <a class="prev-page">
         <n-icon>
           <arrow-back />
