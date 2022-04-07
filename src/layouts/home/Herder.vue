@@ -1,12 +1,12 @@
 <script setup></script>
 
 <template>
-  <header class="header">
+  <header class="header scale-up-center">
     <div>
       <a href="/">LOGO</a>
     </div>
     <div class="md:hidden">
-      <nav class="cursor-pointer">
+      <nav>
         <a>目录</a>
         <a>关于</a>
         <a>测试选项</a>

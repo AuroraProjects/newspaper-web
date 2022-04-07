@@ -119,7 +119,7 @@ const like = (id) => {
           <heart-outline />
         </n-icon>
         <!-- 填充状态 -->
-        <n-icon v-if="hear === item.id" color="#F87171" size="18">
+        <n-icon  v-if="hear === item.id" color="#F87171" size="18">
           <heart-sharp />
         </n-icon>
         <span class="like">{{ item.likeNum }}</span>

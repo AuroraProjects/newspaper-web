@@ -31,8 +31,16 @@ textarea:focus
   nav
     display: flex
     a
+      font-size: 15px
       margin-right: 10px
       margin-left: 10px
+      padding: 10px
+      border: 1px solid #red
+      border-radius: 5px
+      color: #737373
+      &:hover
+        --tw-bg-opacity: 1
+        background-color: rgb(246 247 248/var(--tw-bg-opacity))
 
 // 底部
 .footer
@@ -295,7 +303,7 @@ textarea:focus
   position: fixed
   right: 5%
   bottom: $height
-  z-index: 99
+  z-index: 99999
   &:hover
     color: #2276D2
   &:active
@@ -377,3 +385,25 @@ textarea:focus
     &:hover
       background-color: #BFDBFE
       color: #4B8CF7
+
+.scale-up-center
+  -webkit-animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both
+  animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both
+
+@-webkit-keyframes scale-up-center
+  0%
+    -webkit-transform: scale(0.5)
+    transform: scale(0.5)
+
+  100% 
+    -webkit-transform: scale(1)
+    transform: scale(1)
+
+@keyframes scale-up-center
+  0%
+    -webkit-transform: scale(0.5)
+    transform: scale(0.5)
+
+  100%
+    -webkit-transform: scale(1)
+    transform: scale(1)
