@@ -20,7 +20,6 @@ import './assets/rewrite.sass';
 
 import store from './router/index.js';
 import router from './store/index.js';
-// 评论组件
 
 // md 解析器
 VMdPreview.use(githubTheme, {

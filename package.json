@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "@kangc/v-md-editor": "^2.3.14",
-    "@vssue/api-github-v4": "^1.4.7",
     "unplugin-vue-components": "^0.18.5",
     "vue": "^3.2.25"
   },
