@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <header class="header scale-up-center">
+  <header class="header">
     <div>
       <a href="/">LOGO</a>
     </div>
